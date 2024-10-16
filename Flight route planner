@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+    printf("Enter city name: ");
+    scanf("%s", cities[*numCities].name);
+    printf("Enter x-coordinate: ");
+    scanf("%d", &cities[*numCities].x);
+    printf("Enter y-coordinate: ");
+    scanf("%d", &cities[*numCities].y);
+
+    (*numCities)++;
+    printf("City added successfully.\n");
+}
+
+void addFlight(Flight flights[], int* numFlights, City cities[], int numCities) {
+    if (numCities < 2) {
+        printf("At least two cities are required to add a flight.\n");
+        return;
+    }
+
+    int from, to;
+    double distance, cost;
+
+    printf("Select source city:\n");
+    for (int i = 0; i < numCities; i++) {
+        printf("%d. %s\n", i + 1, cities[i].name);
+    }
+    printf("Enter choice: ");
+    scanf("%d", &from);
+    from--;
+
+    printf("Select destination city:\n");
+    for (int i = 0; i < numCities; i++) {
+        if (i != from) {
+            printf("%d. %s\n", i + 1, cities[i].name);
+        }
+    }
+    printf("Enter choice: ");
+    scanf("%d", &to);
+    to--;
+
+    printf("Enter distance between %s and %s: ", cities[from].name, cities[to].name);
+    scanf("%lf", &distance);
+
+    printf("Enter cost of the flight: ");
+    scanf("%lf", &cost);
+
+    flights[*numFlights].from = from;
+    flights[*numFlights].to = to;
+    flights[*numFlights].distance = distance;
+    flights[*numFlights].cost = cost;
+
+    (*numFlights)++;
+    printf("Flight added successfully.\n");
+}
+
+void planRoute(Flight flights[], int numFlights, City cities[], int numCities) {
+
+    printf("Route planning functionality is not implemented yet.\n");
+}
+
